@@ -1,6 +1,7 @@
 import click
 from . import api_wrapper
 from . import api_dao
+from flask.cli import with_appcontext
 
 '''
     Get Data for Africa, either 
@@ -17,6 +18,7 @@ from . import api_dao
 @click.command('get-data')
 @click.option('-t', '--type', required=True, help='Choices: latest, vaccine, history')
 @click.option('-s', '--status', help='either confirmed or deaths')
+@with_appcontext
 def get_data_command(type, status):
 
     parameters = {'continent':'africa'}
