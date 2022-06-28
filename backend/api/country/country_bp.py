@@ -1,3 +1,6 @@
+from unittest import result
+from flask import( Blueprint, jsonify)
+from . import country_dao
 '''
     Country blueprint
 
@@ -11,24 +14,29 @@
         /country/<iso2>/percapita - get per capita for this country ref:<iso2> (deaths, confirmed, vaccinated)
 '''
 
-from flask import( Blueprint, jsonify)
 
 bp = Blueprint("country", __name__, url_prefix='/country')
 
 @bp.route('/')
-def index(iso2):
-    return
+def index():
+    result = country_dao.get_country_data()
+    return result
 
 @bp.route('/<iso2>')
 def country(iso2):
-    return
+    iso  = str(iso2).upper()
+    result = country_dao.get_country_data(iso)
+    return jsonify(result)
 
 @bp.route('/<iso2>/percapita')
 def percapita(iso2):
-    return
+    iso  = str(iso2).upper()
+    result = country_dao.get_percapita(iso)
+    return jsonify(result)
 
 @bp.route('/<iso2>/daily')
 def daily(iso2):
+    iso  = str(iso2).upper()
     return
     
 @bp.route('/test')
