@@ -18,4 +18,7 @@ def create_app(test_config=None):
     except OSError:
         pass
 
+    from .country import country_bp
+    app.register_blueprint(country_bp.bp)
+
     return app
