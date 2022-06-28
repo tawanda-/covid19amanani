@@ -4,7 +4,7 @@ from re import A
 from flask import Flask
 
 def create_app(test_config=None):
-    app = Flask(__name__, instance_relative_config=True,)
+    app = Flask(__name__, instance_relative_config=True,static_folder="web/web/static",)
 
     if test_config is None:
         # load the instance config, if it exists, when not testing
@@ -29,7 +29,10 @@ def create_app(test_config=None):
     app.cli.add_command(api_commands.get_data_command)
 
     #Register blueprints
+    from .web import web_app_bp
+    app.register_blueprint(web_app_bp)
+
     from .country import country_bp
-    app.register_blueprint(country_bp.bp)
+    app.register_blueprint(country_bp)
 
     return app
