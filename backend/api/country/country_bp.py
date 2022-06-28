@@ -14,7 +14,7 @@ from . import country_dao
 '''
 
 
-bp = Blueprint("country", __name__, url_prefix='/country')
+bp = Blueprint("country_bp", __name__, url_prefix='/country')
 
 @bp.route('/')
 def index():
