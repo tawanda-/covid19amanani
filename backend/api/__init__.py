@@ -30,9 +30,9 @@ def create_app(test_config=None):
 
     #Register blueprints
     from .web import web_app_bp
-    app.register_blueprint(web_app_bp)
+    app.register_blueprint(web_app_bp.bp)
 
     from .country import country_bp
-    app.register_blueprint(country_bp)
+    app.register_blueprint(country_bp.bp)
 
     return app
