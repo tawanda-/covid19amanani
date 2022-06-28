@@ -1,4 +1,3 @@
-from unittest import result
 from flask import( Blueprint, jsonify)
 from . import country_dao
 '''
@@ -19,8 +18,8 @@ bp = Blueprint("country", __name__, url_prefix='/country')
 
 @bp.route('/')
 def index():
-    result = country_dao.get_country_data()
-    return result
+    result = country_dao.get_country_data('ALL')
+    return jsonify(result)
 
 @bp.route('/<iso2>')
 def country(iso2):
