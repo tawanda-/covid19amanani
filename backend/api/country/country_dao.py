@@ -8,7 +8,7 @@ def get_country_data(iso):
     if iso == 'ALL':
         with db.get_db().cursor(row_factory=dict_row) as cursr:
             cursr.execute("""
-                SELECT *
+                SELECT country, administered, people_partially_vaccinated, people_vaccinated, confirmed, deaths, population 
                 FROM current_data
                 INNER JOIN country ON current_data.iso=country.iso
             """)
