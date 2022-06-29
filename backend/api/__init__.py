@@ -1,7 +1,7 @@
 import os
-from re import A
 
 from flask import Flask
+from flask_cors import CORS
 
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True,static_folder="web/web/static",)
@@ -22,6 +22,10 @@ def create_app(test_config=None):
     #register cmd line method to initialise db
     from . import db
     db.init_app(app)
+
+    #CORS
+    CORS(app, origins=['http://localhost:3000'])
+    app.config['CORS_HEADERS'] = 'Content-Type'
 
     #register cmd line method to get data from covid19 api
     from .covid19api import api_commands

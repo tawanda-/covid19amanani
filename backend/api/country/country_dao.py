@@ -44,11 +44,10 @@ def _get_country_percapita(iso):
         population = row.get('population')
         country = str(row.get('country')).strip()
         vaxed = row.get('people_vaccinated')/population
-        vaxed = row.get('people_vaccinated')/population
         confirmed = row.get('confirmed')/population
         deaths =row.get('deaths')/population
 
-        result = [['country','vaccinated','confirmed', 'deaths']]
+        result = [['country', 'vaccinated','confirmed', 'deaths']]
         result.append((country, vaxed, confirmed, deaths))
         return result
 
@@ -60,13 +59,20 @@ def _get_all_percapita():
             INNER JOIN country ON current_data.iso=country.iso;
         """)
         rows = cursr.fetchall()
-        result = [['country','vaccinated','confirmed', 'deaths']]
+        result = {}
+        rv = [['country','vaccinated']]
+        rc = [['country','confirmed']]
+        rd = [['country','deaths']]
         for k in rows:
             population = k.get('population')
             country = str(k.get('country')).strip()
             vaxed = k.get('people_vaccinated')/population
-            vaxed = k.get('people_vaccinated')/population
             confirmed = k.get('confirmed')/population
             deaths =k.get('deaths')/population
-            result.append([country, vaxed, confirmed, deaths])
+
+            rv.append([country,vaxed*100])
+            rc.append([country, confirmed*100])
+            rd.append([country, deaths*100])
+
+        result = {'vaccinated':rv, 'confirmed':rc, 'deaths':rd}
         return result

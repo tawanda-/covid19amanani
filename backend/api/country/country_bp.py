@@ -1,5 +1,6 @@
 from flask import( Blueprint, jsonify)
 from . import country_dao
+from flask_cors import cross_origin
 '''
     Country blueprint
 
@@ -28,6 +29,7 @@ def country(iso2):
     return jsonify(result)
 
 @bp.route('/<iso2>/percapita')
+@cross_origin(origins=['http://localhost:3000'])
 def percapita(iso2):
     iso  = str(iso2).upper()
     result = country_dao.get_percapita(iso)
