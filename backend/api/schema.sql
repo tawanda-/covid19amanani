@@ -1,3 +1,7 @@
+DROP DATABASE IF EXISTS "covid19-amanani";
+
+CREATE DATABASE "covid19-amanani"
+    
 DROP TABLE IF EXISTS current_data;
 DROP TABLE IF EXISTS country;
 

@@ -17,7 +17,7 @@ def get_db(autocommit=False):
                             host='localhost',
                             dbname='covid19-amanani',
                             user='postgres',
-                            password='tawanda',
+                            password='postgres',
                             autocommit=autocommit)
 
     return g.db

@@ -1,0 +1,38 @@
+version: '3.1'
+
+services:
+
+  postgres:
+    image: postgres
+    restart: always
+    environment: 
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - '5438:5432'
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+      # copy the sql script to create tables
+      - ./backend/api/schema.sql:/docker-entrypoint-initdb.d/create_tables.sql
+      # copy the sql script to fill tables
+      #- ./sql/fill_tables.sql:/docker-entrypoint-initdb.d/fill_tables.sql
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8081:8080
+
+  backend:
+    build: 
+        context: backend/api
+    command: >
+      sh -c " export FLASK_APP=api && 
+              export FLASK_ENV=development &&
+              flask run"
+    ports: 
+        - '5000:5000'
+    depends_on:
+        - postgres
+    container_name: Amanani
