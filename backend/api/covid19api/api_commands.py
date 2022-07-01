@@ -41,4 +41,4 @@ def get_data_command(type, status):
         api_dao.insert(type, response)
         click.echo(f'Succesfully added {type} data.')
     else:
-        click.echo(f'Oops something wennt wrong please try again.')
+        click.echo(f'Oops something went wrong please try again.')
