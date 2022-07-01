@@ -17,9 +17,7 @@ def get(endpoint, parameters):
         case 'vaccine':
             response = requests.get(Endpoints.VACCINES.value, params=parameters)
         case 'history':
-            #response = requests.get(Endpoints.HISTORY, params=parameters)
-            with current_app.open_resource('covid19api/data/history-deaths.json') as json_file:
-                response = json.load(json_file)
+            return None
         case _:
             return None
 

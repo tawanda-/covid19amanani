@@ -14,7 +14,7 @@ COPY_CURRENT_DATA = "COPY current_data (iso, confirmed, deaths, administered, pe
 def get_db(autocommit=False):
     if 'db' not in g:
         g.db = psycopg.connect(
-                            host='localhost',
+                            host='postgres',
                             dbname='postgres',
                             user='postgres',
                             password='postgres',
