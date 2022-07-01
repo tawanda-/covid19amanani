@@ -1,10 +1,3 @@
-DROP DATABASE IF EXISTS "covid19-amanani";
-
-CREATE DATABASE "covid19-amanani"
-    
-DROP TABLE IF EXISTS current_data;
-DROP TABLE IF EXISTS country;
-
 CREATE TABLE IF NOT EXISTS country
 (
     iso character(2) COLLATE pg_catalog."default" NOT NULL,

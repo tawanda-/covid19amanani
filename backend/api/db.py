@@ -15,7 +15,7 @@ def get_db(autocommit=False):
     if 'db' not in g:
         g.db = psycopg.connect(
                             host='localhost',
-                            dbname='covid19-amanani',
+                            dbname='postgres',
                             user='postgres',
                             password='postgres',
                             autocommit=autocommit)
