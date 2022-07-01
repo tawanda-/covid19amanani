@@ -13,18 +13,18 @@ def get(endpoint, parameters):
 
     match endpoint:
         case 'latest':
-            response = requests.get(Endpoints.LATEST, params=parameters)
+            response = requests.get(Endpoints.LATEST.value, params=parameters)
         case 'vaccine':
-            response = requests.get(Endpoints.VACCINES, params=parameters)
+            response = requests.get(Endpoints.VACCINES.value, params=parameters)
         case 'history':
             #response = requests.get(Endpoints.HISTORY, params=parameters)
-            with current_app.open_resource('covid19api/live.json') as json_file:
+            with current_app.open_resource('covid19api/data/history-deaths.json') as json_file:
                 response = json.load(json_file)
         case _:
             return None
 
     if response:
-        content = response.content
+        content = response.json()
         return content
     else:
         return None   
