@@ -66,7 +66,7 @@ There are two options to setup the application:
 
 In the root application folder run the following command in terminal
 
-    ````./setup.sh````
+    ./setup.sh
 
 This command will create a virtual environment folder 'venv', install dependencies, setup the database and start the flask application development server.
 Option 2 achieves the same results.
@@ -77,11 +77,15 @@ In the root folder run the following commands:
 
 1. Create a virtual environment:
 
-    ````python3 venv venv````
+    ````
+    python3 venv venv
+    ````
     
  - Initialise the virtual environment:
     
-    ````. venv/bin/activate ````
+    ````
+    . venv/bin/activate
+    ````
 
 2. Install dependencies:
 
@@ -97,13 +101,21 @@ In the root folder run the following commands:
     
 4. Create database tables and load data
 
-    ````cd backend````
+    ````
+    cd backend
+    ````
 
-    ````flask init-db````
+    ````
+    flask init-db
+    ````
     
-    ````flask get-data latest````
+    ````
+    flask get-data -t latest
+    ````
     
-    ````flask get-data vaccine````
+    ````
+    flask get-data -t vaccine
+    ````
     
 5. Start flask server
 
