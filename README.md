@@ -21,7 +21,7 @@
 
 ## Description
 
-The word isiXhosa word Amanani translated in to English means numbers. IsiXhosa is one of the official languages of South Africa. So the literal transalation of Covid-19 amanani is Covid-19 numbers.
+Amanani is an isiXhosa word when translated to English means numbers. IsiXhosa is one of the official languages of South Africa. So the literal transalation of Covid-19 amanani is Covid-19 numbers.
 
 ## Tech
 
@@ -60,13 +60,32 @@ Postgres server
 
 ##### Flask Setup
 
+There are two options to setup the application:
+
+###### Option 1:
+
+In the root application folder run the following command in terminal
+
+    ````./setup.sh````
+
+This command will create a virtual environment folder 'venv', install dependencies, setup the database and start the flask application development server.
+Option 2 achieves the same results.
+
+###### Option 2:
+
+In the root folder run the following commands:
+
 1. Create a virtual environment:
 
     ````python3 venv venv````
+    
+ - Initialise the virtual environment:
+    
+    ````. venv/bin/activate ````
 
 2. Install dependencies:
 
-    pip install -r requirements.txt 
+    pip install -r /backend/api/requirements.txt 
     
 3. Setup flask variables
 
@@ -78,19 +97,21 @@ Postgres server
     
 4. Create database tables and load data
 
-    ````
-    flask init-db
+    ````cd backend````
+
+    ````flask init-db````
     
-    flask get-data latest
+    ````flask get-data latest````
     
-    flask get-data vaccine
-    ````
+    ````flask get-data vaccine````
     
 5. Start flask server
 
      ````
      flask run
      ````
+     
+To check if all is well go to http://localhost:5000/country/test this page returns "hello":"world".
     
 In browser go to: localhost:5000/test
     
@@ -115,7 +136,7 @@ In browser go to: localhost:5000/test
      npm start
      ````
 
-The website is accessible on localhost:3000
+The website is accessible on http://localhost:3000
 
 ## License
 
