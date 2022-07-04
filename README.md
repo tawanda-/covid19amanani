@@ -48,6 +48,8 @@ The main actors involved in handling client requests are:
 In terminal run the following command:
 
     docker-compose up
+    
+To access the website go to: http://localhost:5000
 
 ### Manual Installation:
 
@@ -67,6 +69,8 @@ There are two options to setup the application:
 In the root application folder run the following command in terminal
 
     ./setup.sh
+    
+To access the website go to: http://localhost:5000
 
 This command will create a virtual environment folder 'venv', install dependencies, setup the database and start the flask application development server.
 Option 2 achieves the same results.
@@ -125,9 +129,9 @@ In the root folder run the following commands:
      
 To check if all is well go to http://localhost:5000/country/test this page returns "hello":"world".
     
-In browser go to: localhost:5000/test
+To access the main website go to: http://localhost:5000
     
-#### Frontend
+#### Frontend Development
 
 1. Change directory to folder frontend/web
 
@@ -149,6 +153,12 @@ In browser go to: localhost:5000/test
      ````
 
 The website is accessible on http://localhost:3000
+
+4. To Build the website:
+
+    ````
+    npm run build
+    ````
 
 ## License
 
