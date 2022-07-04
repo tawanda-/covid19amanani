@@ -64,19 +64,6 @@ Postgres server
 
 There are two options to setup the application:
 
-###### Option 1:
-
-In the root application folder run the following command in terminal
-
-    ./setup.sh
-    
-To access the website go to: http://localhost:5000
-
-This command will create a virtual environment folder 'venv', install dependencies, setup the database and start the flask application development server.
-Option 2 achieves the same results.
-
-###### Option 2:
-
 In the root folder run the following commands:
 
 1. Create a virtual environment:
@@ -93,7 +80,9 @@ In the root folder run the following commands:
 
 2. Install dependencies:
 
-    pip install -r /backend/api/requirements.txt 
+    ````
+    pip install -r /backend/api/requirements.txt
+    ````
     
 3. Setup flask variables
 
