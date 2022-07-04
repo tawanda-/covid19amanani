@@ -58,21 +58,19 @@ To access the website go to: http://localhost:5000
 ##### Python requirements
 
 Python > 3.10
+
 Postgres server
 
 ##### Flask Setup
 
-There are two options to setup the application:
-
 In the root folder run the following commands:
-
 1. Create a virtual environment:
 
     ````
     python3 venv venv
     ````
     
- - Initialise the virtual environment:
+  - Initialise the virtual environment:
     
     ````
     . venv/bin/activate
@@ -94,6 +92,24 @@ In the root folder run the following commands:
     
 4. Create database tables and load data
 
+ - Update postgres connection string, open file 'backend/api/db.py' in text editor and update host from "postgres" to "localhost"
+ 
+   From:
+
+   > def get_db(autocommit=False):
+    if 'db' not in g:
+        g.db = psycopg.connect(
+                            host='postgres',
+			   
+    To:
+
+    > def get_db(autocommit=False):
+    if 'db' not in g:
+        g.db = psycopg.connect(
+                            host='localhost',
+
+                         
+
     ````
     cd backend
     ````
@@ -110,44 +126,53 @@ In the root folder run the following commands:
     flask get-data -t vaccine
     ````
     
-5. Start flask server
+ 5. Start flask server
 
-     ````
-     flask run
-     ````
+    ````
+    flask run
+    ````
      
-To check if all is well go to http://localhost:5000/country/test this page returns "hello":"world".
-    
-To access the main website go to: http://localhost:5000
+    To check if all is well go to http://localhost:5000/country/test this page returns "hello":"world".
+
+    Api Endpoints:  
+
+	<http://localhost:5000/country> "For all countries get the latest data {deaths, confirmed, vaccinated}".<br> 	
+	<http://localhost:5000/country/{iso2}> "Get this country ref:<iso2>  latest data {deaths, confirmed, vaccinated}". <br>	
+	<http://localhost:5000/country/all/percapita> "Get per capita values (deaths, confirmed, vaccinated) for all countries". <br>
+	<http://localhost:5000/country/{iso2}/percapita> "Get per capita for this country ref:<iso2> (deaths, confirmed, vaccinated)".  <br>
+
+     To access the main website go to: http://localhost:5000
     
 #### Frontend Development
 
-1. Change directory to folder frontend/web
+##### React setup:
 
-     ````
-     cd {location of app}/frontend/web
-     ````
+ 1. Change directory to folder frontend/web. 
+
+    ````
+    cd {location of app}/frontend/web
+    ````
      
      
-2. Install dependencies
+ 2. Install dependencies  
 
     ````
     npm install
     ````
     
-3. Start the development server:
+ 3. Start the development server:  
  
      ````
      npm start
      ````
 
-The website is accessible on http://localhost:3000
+     The website is accessible on http://localhost:3000. 
 
-4. To Build the website:
+  4. To Build the website:  
 
-    ````
-    npm run build
-    ````
+     ````
+     npm run build
+     ````
 
 ## License
 
